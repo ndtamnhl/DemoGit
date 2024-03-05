@@ -1,0 +1,382 @@
+link: https://viblo.asia/p/kieu-du-lieu-trong-javascript-L4x5xLXg5BM
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
+// Tìm hiểu về JavaScript
+// 1. Tổng quan
+	// là ngôn ngữ lập trình OOP, đa nền tảng, tạo ra các tính tương tác và HTML động.
+	// hoạt động trên cơ chế C-S
+	 -> C gữi res đến S và S gữi req đến C 
+	 -> thông qua giao thức HTTPS...
+	 -> framework 
+		Reactjs: cho app moblie
+		Node.js: xây dựng phát triển ứng dụng readltime
+		Angular:
+	// là ngôn ngữ phát triển web, pb gốc ES1, ES2, ES3, ES5 (2009), ES6 (2015).
+	// TypeScript là ngôn ngữ lập trình mở rộng.
+// 2. JS
+
+ // Biến
+   -> Khai báo biến: let, var, const(khai báo hằng), giá trị mặc định undefine.
+	-> var phạm vi toàn cục, sử dụng khi chưa đc gán trị, biến đc nhận giá trị mặc định.
+	-> let phạm vi block {}.
+	-> const khai báo phải gán giá trị
+   -> Tên biến phân biệt hoa thường, bắt đầu bằng chữ, $, _.
+   -> chuẩn đặt tên biến Lower Camel Case: lastName, firsName.
+
+
+//////////////////////////////////////////////////////////////
+ // A.Toán tử
+   -> = : gán giá trị cho một biến
+   -> + : là cộng đối với số, với chuỗi là nối chuỗi
+   -> * : nhân hai số
+   -> **: lũy thừa
+   -> / : chia lấy nguyên
+   -> % : chia lấy dư
+   -> ++: tăng,
+   -> --: giảm,
+   -> +=, -=,...
+ // So Sánh
+   -> == : so sánh bằng không xét đến kiểu dữ liệu
+   -> ===: so sánh bằng xét kiểu dữ liệu 
+ // logic &&, ||, !, ??=
+ // kiểm tra type variable: typeof.
+ // kiểm tra đối tượng: instanceof.
+ bổ sung ví dụ demo
+
+///////////////////////////////////////////////////////////
+ // B.function
+  -> khai báo: function nameFunction() {}
+  -> Có thể gán kết quả hàm cho biến
+	let a = function sayHello(){
+		console.log("Hello");
+	}=> cách sử dụng a kết quả?
+  -> hàm truyền tham số
+	function getSum(a,b){
+		cosole.log(a+b);
+	}
+  -> hàm có tham số mặc định 
+	funuction getSum(a, b = 1){
+		console.log(a+b);
+	}
+  -> hàm có giá trị trả về
+	function getSum(a,b){
+		return a+b;
+	}
+
+
+
+////////////////////////////////////////////////////////////
+ // C.vòng lặp, for, while, do while,
+  -> forEach dùng cho arr
+
+	var arr = [10,20,"hi",{}]
+	arr.forEach(function(item,index){
+		console.log('arr['+index+'] is item');
+});
+  
+  -> Map dùng cho arr khác forEach là tạo ra arr mới
+	
+	var num = [1,5,2];
+	var doubles = num.map(function(x){
+		return x*2;
+});
+
+  -> for in dùng cho một đối tượng 
+	
+	var obj = {a: 1, b: 2};
+	for (var a in obj){
+	console.log('obj.'+a+'='+obj[a]);
+	// trong đó a là key để truy xuất giá trị dùng obj[key]
+}
+ 
+ -> for of
+	
+	var str = 'abcd';
+	for(var a of str){
+		console.log(a);// kq: "a","b","c","d"
+	}
+
+	let obj = new Map([['x',0],['y',1],['z',2]]);
+
+	for (let kv of obj){
+		console.log(kv);// [...],[...],[...]
+}
+	for (let [key,val] of obj){
+		console.log(val);
+}
+
+///////////////////////////////////////////////////////////////
+  // D.Kiểu dữ liệu 
+	// D.1 kiểu dữ liệu nguyên thủy
+	// D.2 Object
+		let obj = new Object();
+		let obj2 = {};
+	// D.3 NaN, inFinite 
+		-> không thực hiện tính toán với số
+		-> typeof// kết quả là number
+	// D.4 String
+		let s = "ABCA";
+		let s2 = "DEF";
+		-> s.length;	// 3
+		-> s.charAt(1); 	// B
+		-> s.concat(" ",s2);	// ABCA DEF
+		-> s.trim();
+		-> s.toUpperCase()/ s.toLowerCase()
+		-> s.indexOf("A");	// 0
+		-> s.lastIndexOf(A);	// 3
+		-> s.search("A");
+ // Arr
+ // Objects
+ // Map
+ // Set
+
+
+//////////////////////////////////////////////////////////////////////////////
+* Đối tượng Js
+-> được đặt trong {}
+	const person ={
+		firstName: "Loc";
+		lastName: "Hoang";
+		age: 20;
+		fullName: function(){
+			return this.lastName + " " + this.firstName;
+		}
+	}
+-> truy cập thuộc tính và phương thức đối tượng 
+	person.firstName;
+	person["firstName"];
+	person.fullName();
+//////////////////////////////////////////////////////////////////////////
+* Sự kiện JS
+-> gọi sự kiện JS từ HTML
+	<div id = "kq"></div>
+	<button onclick="sum()"></button>
+	function sum(){
+		// note: khi nào trigger sự kiện
+	}
+-> một số sự kiện
+	onchange();
+	onclick();
+	onmouseover();// di chuyển chuột qua phần tử HTML
+	onmouseout();// di chuyển phần tử khỏi phần tử HTML
+	onkeydown();// nhấn 1 phím trên bàn phím
+	onload();// trang được tải xong	
+	note: tìm hiểu chi tiết có ex sự kiện
+///////////////////////////////////////////////////////////////////////
+* Chuỗi JS
+note: khi sử dụng có thay đổi giá trị gốc, có được phép sử dụng các phương thức không
+-> at() // lấy chữ cái trong chuỗi tại vị trí
+-> slice(start, end) 
+	// cắt chuỗi trong đoạn start đến end
+	// ko có end cắt từ start đến hết
+	// tham số âm cắt ngược chuỗi
+-> substring()
+	// tương tự như slice() khác giá trị start, end nhỏ hơn 0 được xem là 0
+-> substr()
+	// tương tự như slice() nhưng tham số thứ 2 là độ dài được cắt
+
+// ES6 note: tại sao lại phát sinh thêm ES6
+
+ *Arrow Function (rút gọn cú pháp viết hàm)  note: đặt tên hàm có ý nghĩa
+	=> let myFunction = (a,b) => a * b;
+	=> let hello = "";
+	   hello = () => "Hello";
+	=> hello = (val) => "Hello " + val; / hello = (val) => "Hello " + val;
+
+ *Destructurings
+	* EX1:
+		const arr = ['mustang','f-150','expedition'];
+
+	=> gán các phần tử cho biến cách củ
+	const a = arr[0];
+	const b = arr[1];
+	const c = arr[2];
+	
+	=> gán các phần tử cho biến cách mới 
+	const [a,b,c] = arr;
+
+	=> bỏ các phần tử không lấy
+	const [a,,c] = arr; 	
+	
+	=> Áp dụng với hàm
+	
+	function calculate(a,b){
+		const add = a + b;
+		const subtract = a - b;
+		const multiply = a * b;
+		const divide = a / b;
+
+		return [add,subtract,multiply,divide];
+	}
+	const [add,subtract,multiply,divide] = calculate(4,8);
+	
+	* EX2:
+	=> Sử dụng một đối tượng bên trong một hàm cách củ
+		
+		const animal = {
+			name: 'cat';
+			color: 'black';
+		}
+		
+		myAnimal(animal);
+		
+		function myAnimal(animal){
+			const mess = 'My' + animal.name + 'is a' + animal.color;
+		}
+	=> Sử dụng một đối tượng bên trong một hàm cách mới
+		
+		function({name,color}){
+			const mess = 'My' + name + 'is a' + color
+		}
+	
+	=> Destructurings đối tượng lồng nhau
+		
+		const vehicleOne = {
+			brand: 'Ford'	
+			model: 'Mustang',
+			year: 2021
+			registration:{
+				city: 'Houston',
+				country: 'USA'
+			}
+		}
+		
+		myVehicle(vehicleOne)
+	
+		function myVehicle({model, registration: {country}}){
+			const mess = 'My' + model + ' country' + country+ '.';
+		}
+note: cách lưu trữ dữ liệu js trên bộ nhớ
+
+ *Spread Operator: sao chép nhanh tất cả hoặc 1 phần của mảng hoặc đối tượng vào  mảng hoặc đối tượng khác
+	
+	EX1:
+	const arrOne = [1,2,3];
+	const arrTwo = [4,5,6];
+	const arrCopy = [...arrOne,...arrTwo];
+	
+	EX2:
+	const arrNumbers = [1,2,3,4,5,6];
+	const [one,two, ...rest] = arrNumbers;
+	
+	EX3:
+	
+	const myVehicle = {
+		brand: 'Ford',
+		model: 'Mustang',
+		color: red// số 1 test lại
+	}
+	const updateMyVehicle = {
+		type: 'car',
+		year: 2021,
+		color: 'yellow'
+	}
+	
+	const myupdateVehicle = {...myVehicle,...updateMyVehicle}; đối tượng được update và màu được ghi đè theo màu của đối tượng sau 
+////////////////////////////////////////////////////////////////////////////////////	
+ *Map
+ -> Tạo Map mới
+	const fruits = new Map([
+	["apples",500],
+	["bananas",300],
+	["oranges",200]
+]);
+	
+ -> thay đổi giá trị bên trong Map
+	const fruits = new Map();
+	fruits.set("apples",600); // giá trị ban đầu của apples được thay bằng 600
+
+ -> lấy giá trị bên trong Map
+	fruits.get("apples"); // giá trị nhận được là 600
+
+ -> số phần tử trong Map 
+	fruits.size; // 3
+
+ -> hủy phần tử trong Map
+	fruits.delete("apples");
+
+
+////
+ *Array
+  -> Khai báo: 
+	const cars=['Saab','Volvo','BMW'];
+	const  cars = [];
+	const cars = new Array();
+  -> Thao tác với arr
+	arr.push() // thêm phần tử vào cuối mảng
+	arr.pop() // xóa phần tử ở cuối mảng
+	unshift() // thêm phần tử vào đầu mảng
+	shift() // xóa phần tử đầu mảng	
+	splice(start, deleteCount, item1, item2) 
+  		start là vị trí bắt đầu thêm hoặc xóa phần tử
+		
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+//////// React cơ bản
+
+1. new Folder
+2. open Folder in vs code
+3. npm install -g expo-cli // expo --version
+4. npx create-expo-app@latest HelloWorld // create new Project with app name HelloWrold
+5. cd + name App
+6. npm start // run app	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
