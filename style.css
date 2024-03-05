@@ -1,0 +1,28 @@
+#_title{
+    margin-top: 50px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 600;
+}
+body{
+    margin-top: 10px; 
+    width: 50%;
+    align-items: center;
+    position: absolute;
+    left: 25%;
+}
+#_btn_submit{
+    margin-top: 15px;
+}
+#qrcode{
+    margin-top: 20px;
+}
+.error-message{
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: red;
+}
+hr{
+    width: 100%;
+    color: ghostwhite;
+}
